@@ -1,4 +1,8 @@
 # predicting_GPCR
+
+This repo uses a SVM to predict whether a ligand (represented by a smile) interacts with GPCR
+
+# Using this repo
 Make sure you have Anaconda installed.
 
 Run the following commands to create the environment:
