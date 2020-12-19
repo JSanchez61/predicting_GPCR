@@ -67,7 +67,7 @@ class Train_models:
     
     def write_results(self):
         # Save the report
-        with open(os.path.join(REPORTS, dir_name, file_name+'.json'), 'w') as f:
+        with open(os.path.join(REPORTS, file_name+'.json'), 'w') as f:
             json.dump(self.reports, f)
             print('results saved') 
 
@@ -118,7 +118,7 @@ class Train_models:
         print('getting report') 
         self.reports['rf'] = self.get_results(mdl)
         
-        model_path = os.path.join(MODELS, dir_name, file_name+'.rf')
+        model_path = os.path.join(MODELS, file_name+'.rf')
         
         joblib.dump(mdl, model_path)
     
@@ -141,7 +141,7 @@ class Train_models:
 
         self.reports['xgb'] = self.get_results(mdl)
                 
-        model_path = os.path.join(MODELS, dir_name, file_name+'.xgb')
+        model_path = os.path.join(MODELS, file_name+'.xgb')
         joblib.dump(mdl, model_path)
 
     def svm_classifier(self):
@@ -158,7 +158,7 @@ class Train_models:
         mdl.fit(self.x_train, self.y_train, self.x_val, self.y_val)
 
         self.reports['svm'] = self.get_results(mdl)
-        model_path = os.path.join(MODELS, dir_name, file_name+'.svm')
+        model_path = os.path.join(MODELS, file_name+'.svm')
         joblib.dump(mdl, model_path)
 
     def mlp_classifier(self):
@@ -184,7 +184,7 @@ class Train_models:
 
         self.reports['mlp'] = self.get_results(mdl)
         
-        model_path = os.path.join(MODELS, dir_name, file_name+'.mlp')
+        model_path = os.path.join(MODELS, file_name+'.mlp')
         joblib.dump(mdl, model_path)
 
     def train_all(self):
@@ -210,8 +210,7 @@ if __name__=="__main__":
         os.mkdir(REPORTS)    
     
     file_name, _ = os.path.splitext(os.path.basename(sys.argv[1]))
-    
-    dir_name = 'biasnet' 
+     
     arguments = len(sys.argv) - 1
 
     if arguments ==3:

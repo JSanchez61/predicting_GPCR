@@ -15,7 +15,7 @@ from rdkit import Chem
 
 class biasNet:
 
-    MODELS_DIR = os.path.join('models')
+    MODELS_DIR = os.path.join('models_cano')
 
     def __init__(self):
 
@@ -84,6 +84,5 @@ if __name__=='__main__':
     input_smiles = input_smiles.strip()    
     
     biasnet = biasNet()
-    print("After Object")
     biasnet.predict(input_smiles)
 
